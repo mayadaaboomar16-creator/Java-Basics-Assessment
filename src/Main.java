@@ -1,15 +1,43 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
-
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+        Scanner input = new Scanner(System.in);
+        double balance = 1000;
+        while (true) {
+            System.out.println("current balance : " + balance);
+            System.out.println("1- Deposit");
+            System.out.println("2-Withdraw");
+            System.out.println("3-Exit");
+            System.out.println("Choose the option : ");
+            int choice = input.nextInt();
+            switch (choice) {
+                case 1:
+                    System.out.println("Enter deposit amount : ");
+                    double deposit = input.nextDouble();
+                    if (deposit > 0) {
+                        balance += deposit;
+                        System.out.println("The new balance is : " + balance);
+                    } else {
+                        System.out.println("Invalid amount ");
+                    }
+                    break;
+                case 2:
+                    System.out.println("Enter withdraw amount : ");
+                    double withdraw = input.nextDouble();
+                    if (withdraw > 0 && withdraw<= balance) {
+                        balance -= withdraw;
+                        System.out.println("The new balance is : " + balance);
+                    } else {
+                        System.out.println("invalid amount");
+                    }
+                    break;
+                case 3:
+                    System.out.println("Thank you");
+                    return;
+                default:
+                    System.out.println("invalid choise");
+            }
         }
     }
 }
